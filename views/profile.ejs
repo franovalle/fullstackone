@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>exam platform</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -10,7 +10,6 @@
 <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
@@ -35,20 +34,25 @@
 
             </div>
         </div>
-       <!--- <div class="col-sm-6">
-          <h3>Messages</h3>
-          <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
+       <div class="col-sm-6">
+          <h3>Exam</h3>
+          <p>Flag any questions you have a hard time with</p>
+          <ul class="exam">
+          <% for(var i=0; i<exam.length; i++) {%>
             <li class="message">
-              <span><%= messages[i].name %></span>
-              <span><%= messages[i].msg %></span>
-              <span><%= messages[i].thumbUp %></span>
-              <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+              <span><%= exam[i].answerone %></span>
+              <span><%= exam[i].answertwo %></span>
+              <span><%= exam[i].answerthree %></span>
+              <span><%= exam[i].restart %></span><!--I want this be like the trash can-->
+              
               <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+              <!--<span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
+              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+              <span><i class="fa fa-trash" aria-hidden="true"></i></span>-->
             </li>
           <% } %>
-          </ul>-->
+          </ul>
 
           <h2>Exam Questions</h2>
         <% if (user.local.email) { %>
@@ -58,10 +62,10 @@
             <p>What are the three main branches of the US government?</p>
             <input type="text"  name="answertwo">
             <p>What are the two countries that border the United States?</p>
-            <input type="text"  name="answertwo">
+            <input type="text"  name="answerthree">
             <button type="submit">Submit</button>
-            <button type="submit">Clear</button><!--Clear, this will serve as the update option-->
-            <button type="submit">Restart</button><!--Restart, this will serve as the delete option-->
+            <!--<button type="submit" class= "hidden">Clear</button>--Clear, this will serve as the update option-->
+            <!--<button type="submit" class="hidden">Restart</button>Restart, this will serve as the delete option-->
           </form>
         </div>
         <% } %>
