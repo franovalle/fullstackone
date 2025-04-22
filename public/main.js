@@ -1,42 +1,54 @@
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var trash = document.getElementsByClassName(".hidden");
 
-Array.from(thumbUp).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg,
-            'thumbUp':thumbUp
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
+//
+
+var update = document.getElementsByClassName("fa-check");
+var restart = document.getElementsByClassName("fa-trash-o");
+//
+
+//update
+Array.from(update).forEach(function(element) {
+  element.addEventListener('click', function(){
+    const answerone = this.parentNode.parentNode.childNodes[1].innerText
+    const answertwo = this.parentNode.parentNode.childNodes[3].innerText
+    const answerthree = this.parentNode.parentNode.childNodes[5].innerText
+    fetch('entries', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        'answerone': 'Washington D.C.',
+        'answertwo': 'legislative, executive, and judicial,',
+        'answerthree': 'Mexico and Canada'
+        
+
+      })
+    })
+    .then(response => {
+      if (response.ok) return response.json()
+    })
+    .then(data => {
+      console.log(data)
+      window.location.reload(true)
+    })
+  });
 });
+//update 
 
-Array.from(trash).forEach(function(element) {
+
+
+Array.from(restart).forEach(function(element) {
       element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
+    const answerone = this.parentNode.parentNode.childNodes[1].innerText
+    const answertwo = this.parentNode.parentNode.childNodes[3].innerText
+    const answerthree = this.parentNode.parentNode.childNodes[5].innerText
         fetch('messages', {
           method: 'delete',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            'name': name,
-            'msg': msg
+            'answerone': 'Washington D.C.',
+            'answertwo': 'legislative, executive, and judicial,',
+            'answerthree': 'Mexico and Canada'
           })
         }).then(function (response) {
           window.location.reload()
