@@ -38,41 +38,56 @@ module.exports = function (app, passport, db) {
         res.redirect('/profile')
       })
   }*/
-      app.post('/exam', (req, res) => {
-        db.collection('exam')
-          .insertOne(req.body)
-          .then(result => {
-            console.log(result);
-            res.redirect('/profile')
-          })
-          .catch(error => console.log(error))
+  /*app.post('/exam', (req, res) => {
+    db.collection('exam')
+      .insertOne(req.body)
+      .then(result => {
+        console.log(result);
+        res.redirect('/profile')
       })
+      .catch(error => console.log(error))
+  })*/
 
-  app.put('/exam', (req, res) => {
+  app.post('/exam', (req, res) => {
+    db.collection('exam').insertOne({ entry: req.body.entry }, (err, result) => {
+      if (err) return console.log(err)
+      console.log('saved to database')
+      res.redirect('/profile')
+    })
+  })
+
+  /*app.put('/exam', (req, res) => {
     db.collection('exam')
       .findOneAndUpdate(
-        { entry: 'heart'},
+        { entry: 'heart' },
         {
           $set: {
             entry: req.body.entry
             //answerone: req.body.answerone,
             //answertwo: req.body.answertwo
           }
-        }, 
+        },
         {
-        //sort: {_id: -1},
-        upsert: true
-      }, 
-      (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-  })
+          //sort: {_id: -1},
+          upsert: true
+        },
+        (err, result) => {
+          if (err) return res.send(err)
+          res.send(result)
+        })
+  })*/
 
-  app.delete('/exam', (req, res) => {
-    db.collection('exam').findOneAndDelete({ entry:'heart' /* answertwo: req.body.answertwo /*answerthree: req.body.answerthree*/ }, (err, result) => {
+  /*app.delete('/exam', (req, res) => {
+    db.collection('exam').findOneAndDelete({ entry: 'heart' /* answertwo: req.body.answertwo /*answerthree: req.body.answerthree }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Incorrect answer!')
+    })
+  })*/
+
+  app.delete('/exam', (req, res) => {
+    db.collection('exam').findOneAndDelete({entry: req.body.entry }, (err, result) => {
+      if (err) return res.send(500, err)
+      res.send('Answer deleted!')
     })
   })
 

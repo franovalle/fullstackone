@@ -1,10 +1,11 @@
-var correct = document.getElementById('update')
-var remove = document.getElementById('delete')
+//var correct = document.getElementById('update')
+//var remove = document.getElementById('delete')
+var remove = document.getElementsByClassName("fa-times");
 
 
 
 //Array.from(correct).forEach(function(element) {
-  correct.addEventListener('click', function(){
+  /*correct.addEventListener('click', function(){
     //const answerone = this.parentNode.parentNode.childNodes[1].innerText
     //const answertwo = this.parentNode.parentNode.childNodes[3].innerText
     //const answerthree = this.parentNode.parentNode.childNodes[5].innerText
@@ -26,14 +27,14 @@ var remove = document.getElementById('delete')
       console.log(data)
       window.location.reload(true)
     })
-  });
+  });*/
 
 
 
 
 
 //Array.from(remove).forEach(function(element) {
-      remove.addEventListener('click', function(){
+      /*remove.addEventListener('click', function(){
     //const answerone = this.parentNode.parentNode.childNodes[1].innerText
     //const answertwo = this.parentNode.parentNode.childNodes[3].innerText
    //const answerthree = this.parentNode.parentNode.childNodes[5].innerText
@@ -50,5 +51,22 @@ var remove = document.getElementById('delete')
         }).then(function (response) {
           window.location.reload()
         })
-      });
+      });*/
 
+      Array.from(remove).forEach(function(element) {
+        element.addEventListener('click', function(){
+         const date = this.parentNode.parentNode.childNodes[1].innerText
+          const entry = this.parentNode.parentNode.childNodes[3].innerText
+          fetch('entries', {
+            method: 'delete',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              'entry': entry
+            })
+          }).then(function (response) {
+            window.location.reload()
+          })
+        });
+  });
