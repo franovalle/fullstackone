@@ -1,6 +1,29 @@
+//debugging starting over
+var remove = document.getElementsByClassName("fa-times");
+
+Array.from(remove).forEach(function(element) {
+  element.addEventListener('click', function(){
+   //const date = this.parentNode.parentNode.childNodes[1].innerText
+    const entry = this.parentNode.parentNode.childNodes[1].innerText
+    fetch('entries', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        //'date': date,
+        'entry': entry
+      })
+    }).then(function (response) {
+      window.location.reload()
+    })
+  });
+});
+
+
 //var correct = document.getElementById('update')
 //var remove = document.getElementById('delete')
-var remove = document.getElementsByClassName("fa-times");
+//var remove = document.getElementsByClassName("fa-times");
 
 
 
@@ -53,7 +76,7 @@ var remove = document.getElementsByClassName("fa-times");
         })
       });*/
 
-      Array.from(remove).forEach(function(element) {
+     /* Array.from(remove).forEach(function(element) {
         element.addEventListener('click', function(){
          const date = this.parentNode.parentNode.childNodes[1].innerText
           const entry = this.parentNode.parentNode.childNodes[3].innerText
@@ -69,4 +92,4 @@ var remove = document.getElementsByClassName("fa-times");
             window.location.reload()
           })
         });
-  });
+  });*/

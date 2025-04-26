@@ -1,3 +1,5 @@
+<!--note to self: using this article to help debug and guide: https://medium.com/better-programming/build-a-crud-js-app-with-fetches-f82143a48b6d -->
+<!--note to self: using this article to debug and a guide: https://fullstackopen.com/en/part3/node_js_and_express-->
 <!doctype html>
 <html>
 <head>
@@ -14,8 +16,40 @@
     </div>
 
     <div class="row">
+      <h2>Exam Questions</h2>
+      <% if (user.local.email) { %>
+        <form action="/exam" method="POST">
+          <p>What is are the 3 most important organ in the human body? Place in order of importance</p>
+          <input type="text"  name="answerone">
+          <p>When performing CPR what organ are you most concerned about?</p>
+          <input type="text"  name="answertwo">
+          <p>In diabetes, which organ is commonly the first to suffer damage from complications?</p>
+          <input type="text"  name="answerthree">
+         
+          <button type="submit">Done</button>
+        </form>
+         
 
-        <!-- LOCAL INFORMATION -->
+      </div>
+      <br></br>
+      <br></br>
+      <% } %>
+      <!--Note to self: I really like this app, need to understand it better how to make inputs go on different line-->
+      <ul class="exam">
+          <% for(var i=0; i<exam.length; i++) {%>
+            <li class="exam">
+              <span><%= exam[i].answerone %></span>
+             <br>
+              <span><%= exam[i].answertwo%></span>
+              <br>
+              <span><%= exam[i].answerthree %></span>
+             
+            </li>
+          <% } %>
+          </ul>
+          
+
+       <!--LOCAL INFORMATION -->
        <!-- <div class="col-sm-6">
             <div class="well">
                 <h3><span class="fa fa-user"></span> Local</h3>
@@ -33,12 +67,62 @@
                 <% } %>
 
             </div>-->
+            </div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
+            
+
+
+
+
+
+
+
+note to self: starting over, i need to debug -->
+<!--<!doctype html>
+<html>
+<head>
+    <title>exam platform</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        LOCAL INFORMATION -->
+       <!-- <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
     
         </div>
        <div class="col-sm-6">
           <h3>Nursing Practice Exam</h3>
-          <!--Note to self: The goal of this project is to be an practice exam, where user can incorrect answers update or delete replies-->
-          <!--Note to self: This codebase is messy, because I was testing out different layout options-->
+          Note to self: The goal of this project is to be an practice exam, where user can incorrect answers update or delete replies-->
+          <!--Note to self: This codebase is messy, because I was testing out different layout options
 
           <ul class="exam">
           <% for(var i=0; i<exam.length; i++) {%>
@@ -46,7 +130,7 @@
               <span><%= exam[i].entry %></span>
               <span><%= exam[i].remove %></span>
               <span><i class="fa fa-times" aria-hidden="true"></i></span>
-              <!--<span><%= exam[i].answertwo %></span>-->
+              <span><%= exam[i].answertwo %></span>-->
               <!--<span><%= exam[i].answerthree %></span>
               <span><%= exam[i].correct %></span>to update to correct answer if wrong
               <span><%= exam[i].remove %></span>to delete
@@ -54,12 +138,12 @@
               <span><i class="fa fa-times" aria-hidden="true"></i></span>the delete method-->
               <!--<span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
               <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-              <span><i class="fa fa-trash" aria-hidden="true"></i></span>-->
+              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
             </li>
           <% } %>
           </ul>
 
-        <!-- <ul class="exam"> I wanted answers, to show in different areas, I need to practice this templating language more.
+        <ul class="exam"> I wanted answers, to show in different areas, I need to practice this templating language more.
             <% for(var i=0; i<exam.length; i++) {%>
               <li class="exam">
                 <span><%= exam[i].answertwo %></span>
@@ -75,21 +159,21 @@
                 <span><i class="fa fa-trash" aria-hidden="true"></i></span>
               </li>
             <% } %>
-            </ul>-->
+            </ul>
 
           <h2>Exam Questions</h2>
         <% if (user.local.email) { %>
           <form action="/exam" method="POST">
             <p>What is the most important organ in the human body?</p>
             <input type="text"  name="entry">
-            <!--<p>When performing CPR what organ are you most concerned about?</p>//note to self: to demo this project will show it with one answer option but the goal is that multiple questions and answers can be applied. 
+            <p>When performing CPR what organ are you most concerned about?</p>//note to self: to demo this project will show it with one answer option but the goal is that multiple questions and answers can be applied. 
             <input type="text"  name="answertwo">
             <p>What are the two countries that border the United States?</p>
-            <input type="text"  name="answerthree">-->
+            <input type="text"  name="answerthree">
             <button type="submit">Done</button>
           </form>
-            <!--<button  id="update"><i class="fa fa-check"></i></button>Clear, this will serve as the update option-->
-            <!--<button id="delete"><i class="fa fa-times"></i></button>Restart, this will serve as the delete optio-->
+            <button  id="update"><i class="fa fa-check"></i></button>Clear, this will serve as the update option-->
+            <!--<button id="delete"><i class="fa fa-times"></i></button>Restart, this will serve as the delete option
 
         </div>
         <% } %>
@@ -101,4 +185,4 @@
 <script src="main.js"></script>
 
 </body>
-</html>
+</html>-->
