@@ -18,11 +18,16 @@ var session      = require('express-session');
 var configDB = require('./config/database.js');
 
 var db
+console.log('connection url ', configDB);
 
 // configuration ===============================================================
 mongoose.connect(configDB.url, (err, database) => {
+  console.log('we here!');//spinning up database 
+  
   if (err) return console.log(err)
-  db = database
+  console.log('we made it here!');
+  
+    db = database
   require('./app/routes.js')(app, passport, db);
 }); // connect to our database
 

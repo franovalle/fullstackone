@@ -1,11 +1,8 @@
-
-//
-
 var update = document.getElementsByClassName("fa-check");
-var restart = document.getElementsByClassName("fa-trash-o");
-//
+var remove = document.getElementsByClassName("fa-times");
 
-//update
+
+
 Array.from(update).forEach(function(element) {
   element.addEventListener('click', function(){
     const answerone = this.parentNode.parentNode.childNodes[1].innerText
@@ -31,11 +28,11 @@ Array.from(update).forEach(function(element) {
     })
   });
 });
-//update 
 
 
 
-Array.from(restart).forEach(function(element) {
+
+Array.from(remove).forEach(function(element) {
       element.addEventListener('click', function(){
     const answerone = this.parentNode.parentNode.childNodes[1].innerText
     const answertwo = this.parentNode.parentNode.childNodes[3].innerText

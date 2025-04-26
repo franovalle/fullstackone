@@ -28,22 +28,22 @@ module.exports = function(app, passport, db) {
 
 // message board routes ===============================================================
 
-    app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+    app.post('/exam', (req, res) => {
+      db.collection('exam').save({answerone: req.body.answerone, answertwo: req.body.answertwo, answerthree: req.body.answerthree}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
       })
     })
 
-    app.put('/messages', (req, res) => {
-      db.collection('messages')
-      .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
+    app.put('/exam', (req, res) => {
+      db.collection('exam')
+      .findOneAndUpdate({answerone: req.body.answerone, answertwo: req.body.answertwo, answerthree: req.body.answerthree}, {
         $set: {
-          thumbUp:req.body.thumbUp + 1
+          update:req.body.update
         }
       }, {
-        sort: {_id: -1},
+        //sort: {_id: -1},
         upsert: true
       }, (err, result) => {
         if (err) return res.send(err)
@@ -51,10 +51,10 @@ module.exports = function(app, passport, db) {
       })
     })
 
-    app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
+    app.delete('/exam', (req, res) => {
+      db.collection('exam').findOneAndDelete({answerone: req.body.answerone, answertwo: req.body.answertwo, answerthree: req.body.answerthree}, (err, result) => {
         if (err) return res.send(500, err)
-        res.send('Message deleted!')
+        res.send('Answer deleted!')
       })
     })
 
