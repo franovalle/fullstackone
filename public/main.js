@@ -1,6 +1,8 @@
 //debugging starting over
 var remove = document.getElementsByClassName("fa-times");
-var update = document.getElementsByClassName("fa-check");
+
+
+
 
 Array.from(remove).forEach(function(element) {
   element.addEventListener('click', function(){
