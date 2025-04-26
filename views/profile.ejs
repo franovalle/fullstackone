@@ -34,7 +34,7 @@
       <br></br>
       <br></br>
       <% } %>
-      <!--Note to self: I really like this app, need to understand it better how to make inputs go on different line-->
+      <!--note to self: I like this app has a lot of potential, will go to community to get help to optimize it-->
       <ul class="exam">
           <% for(var i=0; i<exam.length; i++) {%>
             <li class="exam">
@@ -47,6 +47,7 @@
               <span><i class="fa fa-times" aria-hidden="true"></i></span>
               <span><%= exam[i].update %></span>
               <span><i class="fa fa-check" aria-hidden="true"></i></span>
+              <!--<br>note to self: this break is here to seperate the group of answers, did not work, would like to be a heading that says correct answers, this app can be better, but will continue to work on it.-->
               
             </li>
           <% } %>
