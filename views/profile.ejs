@@ -16,7 +16,7 @@
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
+       <!-- <div class="col-sm-6">
             <div class="well">
                 <h3><span class="fa fa-user"></span> Local</h3>
 
@@ -32,17 +32,17 @@
                     <a href="/connect/local" class="btn btn-default">Connect Local</a>
                 <% } %>
 
-            </div>
+            </div>-->
         </div>
        <div class="col-sm-6">
-          <h3>History Exam</h3>
-          
+          <h3>Nursing Practice Exam</h3>
+          <!--Note to self: The goal of this project is to be an practice exam, where user can incorrect answers update or delete replies-->
           <ul class="exam">
           <% for(var i=0; i<exam.length; i++) {%>
             <li class="exam">
               <span><%= exam[i].answerone %></span>
               <span><%= exam[i].answertwo %></span>
-              <span><%= exam[i].answerthree %></span>
+              <!--<span><%= exam[i].answerthree %></span>-->
               <span><%= exam[i].correct %></span><!--I want this be like the trash can-->
               <span><%= exam[i].delete %></span><!--update option-->
               <span><i class="fa fa-check" aria-hidden="true"></i></span>
@@ -57,12 +57,12 @@
           <h2>Exam Questions</h2>
         <% if (user.local.email) { %>
           <form action="/exam" method="POST">
-            <p>What is the name of the United States' capital city?</p>
+            <p>What is the most important organ in the human body?</p>
             <input type="text"  name="answerone">
-            <p>What are the three main branches of the US government?</p>
+            <p>When performing CPR what organ are you most concerned about?</p>
             <input type="text"  name="answertwo">
-            <p>What are the two countries that border the United States?</p>
-            <input type="text"  name="answerthree">
+            <!--<p>What are the two countries that border the United States?</p>
+            <input type="text"  name="answerthree">-->
             <button type="submit">Done</button>
             <!--<button type="submit" class= "hidden">Clear</button>--Clear, this will serve as the update option-->
             <!--<button type="submit" class="hidden">Restart</button>Restart, this will serve as the delete option-->

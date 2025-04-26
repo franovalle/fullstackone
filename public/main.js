@@ -7,14 +7,14 @@ Array.from(update).forEach(function(element) {
   element.addEventListener('click', function(){
     const answerone = this.parentNode.parentNode.childNodes[1].innerText
     const answertwo = this.parentNode.parentNode.childNodes[3].innerText
-    const answerthree = this.parentNode.parentNode.childNodes[5].innerText
+    //const answerthree = this.parentNode.parentNode.childNodes[5].innerText
     fetch('entries', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        'answerone': 'Washington D.C.',
-        'answertwo': 'legislative, executive, and judicial,',
-        'answerthree': 'Mexico and Canada'
+        'answerone': 'brain',
+        'answertwo': 'brain'
+        //'answerthree': 'Mexico and Canada'
         
 
       })
@@ -43,9 +43,9 @@ Array.from(remove).forEach(function(element) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            'answerone': 'Washington D.C.',
-            'answertwo': 'legislative, executive, and judicial,',
-            'answerthree': 'Mexico and Canada'
+            'answerone': 'brain',
+            'answertwo': 'brain'
+            //'answerthree': 'Mexico and Canada'// note to self: the issue I am finding of something does not match exact, it wont delete. 
           })
         }).then(function (response) {
           window.location.reload()

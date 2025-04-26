@@ -9,7 +9,7 @@ module.exports = function(app, passport, db) {
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('exam').find().toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
@@ -38,7 +38,7 @@ module.exports = function(app, passport, db) {
 
     app.put('/exam', (req, res) => {
       db.collection('exam')
-      .findOneAndUpdate({answerone: req.body.answerone, answertwo: req.body.answertwo, answerthree: req.body.answerthree}, {
+      .findOneAndUpdate({answerone: req.body.answerone, answertwo: req.body.answertwo /*answerthree: req.body.answerthree*/}, {
         $set: {
           update:req.body.update
         }
@@ -52,7 +52,7 @@ module.exports = function(app, passport, db) {
     })
 
     app.delete('/exam', (req, res) => {
-      db.collection('exam').findOneAndDelete({answerone: req.body.answerone, answertwo: req.body.answertwo, answerthree: req.body.answerthree}, (err, result) => {
+      db.collection('exam').findOneAndDelete({answerone: req.body.answerone, answertwo: req.body.answertwo /*answerthree: req.body.answerthree*/}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Answer deleted!')
       })
