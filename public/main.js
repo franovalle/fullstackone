@@ -1,24 +1,31 @@
 //debugging starting over
 var remove = document.getElementsByClassName("fa-times");
+var update = document.getElementsByClassName("fa-check");
 
 Array.from(remove).forEach(function(element) {
   element.addEventListener('click', function(){
-   //const date = this.parentNode.parentNode.childNodes[1].innerText
-    const entry = this.parentNode.parentNode.childNodes[1].innerText
-    fetch('entries', {
+   const answerone = this.parentNode.parentNode.childNodes[1].innerText//note to self: I had to do some research on childnodes and parent nodes did not realize the spaces where being counted, need to do more research but it worked after playing around with numbers.  https://stackoverflow.com/questions/65694145/how-to-determine-whether-the-childnodes-has-ul-present-or-not
+   const answertwo = this.parentNode.parentNode.childNodes[5].innerText
+   const answerthree = this.parentNode.parentNode.childNodes[9].innerText
+    
+    fetch('exam', {
       method: 'delete',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        //'date': date,
-        'entry': entry
+        'answerone': answerone, 
+        'answertwo': answertwo,
+        'answerthree': answerthree
+
       })
     }).then(function (response) {
       window.location.reload()
     })
   });
 });
+
+//Note to self: I am having a hard time figuring out how I would update especially if i do not know, can i do conditionals? 
 
 
 //var correct = document.getElementById('update')

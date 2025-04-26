@@ -1,5 +1,5 @@
 <!--note to self: using this article to help debug and guide: https://medium.com/better-programming/build-a-crud-js-app-with-fetches-f82143a48b6d -->
-<!--note to self: using this article to debug and a guide: https://fullstackopen.com/en/part3/node_js_and_express-->
+<!--note to self: using this reading to debug and a guide: https://fullstackopen.com/en/part3/node_js_and_express-->
 <!doctype html>
 <html>
 <head>
@@ -19,7 +19,7 @@
       <h2>Exam Questions</h2>
       <% if (user.local.email) { %>
         <form action="/exam" method="POST">
-          <p>What is are the 3 most important organ in the human body? Place in order of importance</p>
+          <p>What is are the most important organ in the human body?</p>
           <input type="text"  name="answerone">
           <p>When performing CPR what organ are you most concerned about?</p>
           <input type="text"  name="answertwo">
@@ -28,7 +28,7 @@
          
           <button type="submit">Done</button>
         </form>
-         
+        <button id="update"><i class="fa fa-check" aria-hidden="true"></button>
 
       </div>
       <br></br>
@@ -38,12 +38,14 @@
       <ul class="exam">
           <% for(var i=0; i<exam.length; i++) {%>
             <li class="exam">
-              <span><%= exam[i].answerone %></span>
+              <span><%= exam[i].answerone%></span>
              <br>
               <span><%= exam[i].answertwo%></span>
               <br>
               <span><%= exam[i].answerthree %></span>
-             
+              <span><%= exam[i].remove %></span>
+              <span><i class="fa fa-times" aria-hidden="true"></i></span>
+              
             </li>
           <% } %>
           </ul>
@@ -81,7 +83,7 @@
 
 
 
-note to self: starting over, i need to debug -->
+<!--note to self: starting over, i need to debug -->
 <!--<!doctype html>
 <html>
 <head>

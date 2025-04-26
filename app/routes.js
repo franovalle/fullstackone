@@ -74,7 +74,7 @@ module.exports = function (app, passport, db) {
   })
   //
   app.delete('/exam', (req, res) => {
-    db.collection('exam').findOneAndDelete({date: req.body.date, entry: req.body.entry}, (err, result) => {
+    db.collection('exam').findOneAndDelete({answerone: req.body.answerone, answertwo: req.body.answertwo, answerthree: req.body.answerthree}, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Answer deleted!')
     })
